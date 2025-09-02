@@ -41,6 +41,22 @@ class BakersCalculatorApp {
         logo?.addEventListener('click', () => {
             this.switchSection('calculator');
         });
+        
+        // Add event listener for Baker's Percentage button
+        const percentageBtn = document.querySelector('.percentage-link-btn');
+        percentageBtn?.addEventListener('click', (e) => {
+            e.preventDefault();
+            const section = e.target.dataset.section;
+            this.switchSection(section);
+        });
+        
+        // Add event listener for Calculator button (on percentage page)
+        const calculatorBtn = document.querySelector('.calculator-link-btn');
+        calculatorBtn?.addEventListener('click', (e) => {
+            e.preventDefault();
+            const section = e.target.dataset.section;
+            this.switchSection(section);
+        });
     }
     
     switchSection(section) {
