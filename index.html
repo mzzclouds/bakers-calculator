@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baker's Calculator - Recipe Scaling Made Easy</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo" id="logo">
+                    <img src="images/logo_BH.png" alt="Baker's Helper" />
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home" class="nav-link active" data-section="calculator">Calculator</a></li>
+                        <li><a href="#percentages" class="nav-link" data-section="percentages">Baker's %</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hero">
+            <h1>Scale Your Family Recipes with Ease</h1>
+            <p>Perfect portions every time - from small batches to big family gatherings</p>
+        </div>
+
+        <!-- Calculator Section -->
+        <div id="calculator-section" class="main-content">
+            <div class="calculator-section">
+                <h2 class="section-title">🥧 Recipe Scaling Helper</h2>
+                
+                <div class="recipe-form">
+                    <div class="scaling-controls">
+                        <div class="scaling-controls-sentence">
+                            <span class="sentence-text">Original Recipe Makes:</span>
+                            <input type="number" id="original-yield" value="2" min="1" step="0.1" class="sentence-input">
+                            <span class="arrow-text">→</span>
+                            <span class="sentence-text">I Want to Make:</span>
+                            <input type="number" id="desired-yield" value="6" min="1" step="0.1" class="sentence-input">
+                            <span class="or-text">or</span>
+                            <button class="compact-scale-btn" data-factor="0.5">Half</button>
+                            <button class="compact-scale-btn" data-factor="2">Double</button>
+                        </div>
+                        <div class="helper-text-container">
+                            <small style="color: #718096;">loaves, servings, or portions</small>
+                        </div>
+                    </div>
+
+                    <div class="ingredients-section">
+                        <h3 class="ingredients-header" style="margin-bottom: 1rem; color: #4a5568;">Ingredients</h3>
+                        
+                        <div id="ingredients-container">
+                            <div class="ingredient-row">
+                                <div class="form-group">
+                                    <label>Ingredient</label>
+                                    <input type="text" class="ingredient-name" value="Bread flour" placeholder="Enter ingredient name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Amount</label>
+                                    <input type="number" class="ingredient-amount" value="500" step="0.1" placeholder="Amount">
+                                </div>
+                                <div class="form-group">
+                                    <label>Unit</label>
+                                    <select class="ingredient-unit">
+                                        <option value="grams">grams</option>
+                                        <option value="cups">cups</option>
+                                        <option value="ounces">ounces</option>
+                                        <option value="pounds">pounds</option>
+                                        <option value="milliliters">milliliters</option>
+                                        <option value="teaspoons">teaspoons</option>
+                                        <option value="tablespoons">tablespoons</option>
+                                        <option value="pieces">pieces</option>
+                                    </select>
+                                </div>
+                                <button class="remove-btn" type="button">×</button>
+                            </div>
+
+                            <div class="ingredient-row">
+                                <div class="form-group">
+                                    <input type="text" class="ingredient-name" value="Water" placeholder="Enter ingredient name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" class="ingredient-amount" value="350" step="0.1" placeholder="Amount">
+                                </div>
+                                <div class="form-group">
+                                    <select class="ingredient-unit">
+                                        <option value="grams">grams</option>
+                                        <option value="cups">cups</option>
+                                        <option value="ounces">ounces</option>
+                                        <option value="pounds">pounds</option>
+                                        <option value="milliliters" selected>milliliters</option>
+                                        <option value="teaspoons">teaspoons</option>
+                                        <option value="tablespoons">tablespoons</option>
+                                        <option value="pieces">pieces</option>
+                                    </select>
+                                </div>
+                                <button class="remove-btn" type="button">×</button>
+                            </div>
+
+                            <div class="ingredient-row">
+                                <div class="form-group">
+                                    <input type="text" class="ingredient-name" value="Salt" placeholder="Enter ingredient name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" class="ingredient-amount" value="10" step="0.1" placeholder="Amount">
+                                </div>
+                                <div class="form-group">
+                                    <select class="ingredient-unit">
+                                        <option value="grams" selected>grams</option>
+                                        <option value="cups">cups</option>
+                                        <option value="ounces">ounces</option>
+                                        <option value="pounds">pounds</option>
+                                        <option value="milliliters">milliliters</option>
+                                        <option value="teaspoons">teaspoons</option>
+                                        <option value="tablespoons">tablespoons</option>
+                                        <option value="pieces">pieces</option>
+                                    </select>
+                                </div>
+                                <button class="remove-btn" type="button">×</button>
+                            </div>
+                        </div>
+
+                        <button class="add-ingredient" type="button">+ Add Ingredient</button>
+                    </div>
+
+
+                    <div class="results-section" id="results-section">
+                        <h3 class="scaled-recipe-header" style="color: #5d5347; margin-bottom: 1.2rem; font-family: 'Georgia', serif;">Scaled Recipe</h3>
+                        <div id="scaled-results"></div>
+                        <div id="scale-info"></div>
+                    </div>
+
+                    <div class="recipe-actions">
+                        <button class="save-recipe-btn" type="button">💾 Save Recipe</button>
+                        <button class="clear-recipe-btn" type="button">🗑️ Clear All</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="quick-tools">
+                    <h3 class="section-title">🔄 Quick Conversions</h3>
+                    
+                    <!-- Weight Converter -->
+                    <div class="converter-section">
+                        <h4 class="converter-label">⚖️ Weight</h4>
+                        <div class="quick-converter">
+                            <div class="form-group">
+                                <label>Convert</label>
+                                <input type="number" id="weight-input" value="2" step="0.1">
+                            </div>
+                            <button class="convert-arrow" id="weight-convert-btn">→</button>
+                            <div class="form-group">
+                                <label>Result</label>
+                                <input type="number" id="weight-result" readonly>
+                            </div>
+                        </div>
+                        <div class="converter-dropdowns">
+                            <select id="weight-from">
+                                <option value="grams">grams</option>
+                                <option value="ounces">ounces</option>
+                                <option value="pounds">pounds</option>
+                            </select>
+                            <select id="weight-to">
+                                <option value="ounces">ounces</option>
+                                <option value="grams">grams</option>
+                                <option value="pounds">pounds</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Volume Converter -->
+                    <div class="converter-section">
+                        <h4 class="converter-label">🥤 Volume</h4>
+                        <div class="quick-converter">
+                            <div class="form-group">
+                                <label>Convert</label>
+                                <input type="number" id="volume-input" value="1" step="0.1">
+                            </div>
+                            <button class="convert-arrow" id="volume-convert-btn">→</button>
+                            <div class="form-group">
+                                <label>Result</label>
+                                <input type="number" id="volume-result" readonly>
+                            </div>
+                        </div>
+                        <div class="converter-dropdowns">
+                            <select id="volume-from">
+                                <option value="cups">cups</option>
+                                <option value="milliliters">ml</option>
+                                <option value="teaspoons">tsp</option>
+                                <option value="tablespoons">tbsp</option>
+                            </select>
+                            <select id="volume-to">
+                                <option value="milliliters">ml</option>
+                                <option value="cups">cups</option>
+                                <option value="teaspoons">tsp</option>
+                                <option value="tablespoons">tbsp</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="baking-tips-section" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">
+                        <h4 class="baking-tips-header" style="color: #4a5568; margin-bottom: 0.5rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="collapse-arrow">▶</span>
+                            📊 Common Ratios
+                        </h4>
+                        <div class="baking-tips-content" style="font-size: 0.9rem; color: #718096; overflow: hidden; max-height: 0; transition: max-height 0.3s ease;">
+                            <div style="padding-top: 0.5rem;">
+                                <div>• Bread hydration: 60-80%</div>
+                                <div>• Pizza dough: 60-65%</div>
+                                <div>• Salt: 1.8-2.2% of flour</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="saved-recipes">
+                    <h3 class="section-title">📚 Saved Recipes</h3>
+                    <div id="saved-recipes-list"></div>
+                    <div id="no-recipes" class="no-recipes" style="display: none;">
+                        <p style="color: #718096; text-align: center; padding: 2rem 0;">No saved recipes yet. Save your first recipe above!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Baker's Percentage Section -->
+        <div id="percentages-section" class="main-content" style="display: none;">
+            <div class="calculator-section">
+                <h2 class="section-title">📊 Baker's Percentage Calculator</h2>
+                <div class="bakers-percent-horizontal">
+                    <!-- Top Row: Ingredients Input -->
+                    <div class="percent-input-section">
+                        <h3>Flour Base & Ingredients</h3>
+                        <div class="form-group">
+                            <label for="flour-amount">Total Flour Weight (in grams):</label>
+                            <div class="flour-input-row">
+                                <input type="number" id="flour-amount" value="1000" min="1" step="1" class="flour-input">
+                                <span class="or-text">or</span>
+                                <div class="flour-presets">
+                                    <span class="flour-preset" data-amount="500">500 g</span>
+                                    <span class="flour-preset" data-amount="1000">1000 g</span>
+                                    <span class="flour-preset" data-amount="1500">1500 g</span>
+                                </div>
+                            </div>
+                            <small>This is your 100% base</small>
+                        </div>
+                        
+                        <h4 style="margin: 1.5rem 0 1rem 0;">Ingredients</h4>
+                        <div class="percent-headers">
+                            <span class="ingredient-header">Name</span>
+                            <span class="grams-header">Grams</span>
+                            <span class="spacer-header"></span>
+                            <span class="percentage-header">Percentage</span>
+                            <span class="spacer-header"></span>
+                        </div>
+                        <div id="common-ingredients-container">
+                            <div class="percent-ingredient-row compact">
+                                <input type="text" placeholder="Ingredient" value="Water" class="percent-name compact-input">
+                                <input type="number" placeholder="grams" value="650" class="gram-value compact-input" step="0.1">
+                                <span class="gram-symbol">g</span>
+                                <span class="calculated-percentage compact">65%</span>
+                                <button class="remove-btn compact" type="button">×</button>
+                            </div>
+                            <div class="percent-ingredient-row compact">
+                                <input type="text" placeholder="Ingredient" value="Salt" class="percent-name compact-input">
+                                <input type="number" placeholder="grams" value="20" class="gram-value compact-input" step="0.1">
+                                <span class="gram-symbol">g</span>
+                                <span class="calculated-percentage compact">2%</span>
+                                <button class="remove-btn compact" type="button">×</button>
+                            </div>
+                        </div>
+                        <div id="percent-ingredients-container">
+                            <!-- Additional ingredients will be added here -->
+                        </div>
+                        <button class="add-ingredient" id="add-percent-ingredient">+ Add Ingredient</button>
+                    </div>
+
+                    <!-- Bottom Row: Full Width Recipe Totals -->
+                    <div class="percent-totals-section">
+                        <h3>Recipe Totals</h3>
+                        <div class="results-section">
+                            <div id="percent-results"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/conversions.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

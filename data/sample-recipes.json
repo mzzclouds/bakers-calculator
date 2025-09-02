@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Classic Sourdough Bread",
+    "originalYield": 2,
+    "desiredYield": 2,
+    "ingredients": [
+      {"name": "Bread flour", "amount": 500, "unit": "grams"},
+      {"name": "Water", "amount": 375, "unit": "milliliters"},
+      {"name": "Sourdough starter", "amount": 100, "unit": "grams"},
+      {"name": "Salt", "amount": 10, "unit": "grams"}
+    ],
+    "createdAt": "2024-01-01T12:00:00.000Z",
+    "lastUsed": "2024-01-15T10:30:00.000Z"
+  },
+  {
+    "name": "Pizza Dough",
+    "originalYield": 4,
+    "desiredYield": 4,
+    "ingredients": [
+      {"name": "All-purpose flour", "amount": 400, "unit": "grams"},
+      {"name": "Water", "amount": 260, "unit": "milliliters"},
+      {"name": "Olive oil", "amount": 2, "unit": "tablespoons"},
+      {"name": "Salt", "amount": 8, "unit": "grams"},
+      {"name": "Active dry yeast", "amount": 1, "unit": "teaspoons"}
+    ],
+    "createdAt": "2024-01-05T14:20:00.000Z",
+    "lastUsed": "2024-01-10T18:45:00.000Z"
+  },
+  {
+    "name": "Chocolate Chip Cookies",
+    "originalYield": 24,
+    "desiredYield": 24,
+    "ingredients": [
+      {"name": "All-purpose flour", "amount": 2.25, "unit": "cups"},
+      {"name": "Butter", "amount": 1, "unit": "cups"},
+      {"name": "Granulated sugar", "amount": 0.75, "unit": "cups"},
+      {"name": "Brown sugar", "amount": 0.75, "unit": "cups"},
+      {"name": "Eggs", "amount": 2, "unit": "ounces"},
+      {"name": "Vanilla extract", "amount": 2, "unit": "teaspoons"},
+      {"name": "Baking soda", "amount": 1, "unit": "teaspoons"},
+      {"name": "Salt", "amount": 1, "unit": "teaspoons"},
+      {"name": "Chocolate chips", "amount": 2, "unit": "cups"}
+    ],
+    "createdAt": "2024-01-03T16:15:00.000Z",
+    "lastUsed": "2024-01-08T20:00:00.000Z"
+  },
+  {
+    "name": "Simple White Bread",
+    "originalYield": 1,
+    "desiredYield": 1,
+    "ingredients": [
+      {"name": "Bread flour", "amount": 500, "unit": "grams"},
+      {"name": "Water", "amount": 320, "unit": "milliliters"},
+      {"name": "Active dry yeast", "amount": 7, "unit": "grams"},
+      {"name": "Salt", "amount": 10, "unit": "grams"},
+      {"name": "Sugar", "amount": 12, "unit": "grams"},
+      {"name": "Butter", "amount": 30, "unit": "grams"}
+    ],
+    "createdAt": "2024-01-02T11:30:00.000Z",
+    "lastUsed": "2024-01-12T09:15:00.000Z"
+  }
+]
