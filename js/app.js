@@ -18,6 +18,7 @@ class BakersCalculatorApp {
         this.initializeConverters();
         this.initializeSavedRecipes();
         this.initializeBakingTips();
+        this.initializePrivacyModal();
         this.initializeRouting();
         
         // Make instances available globally for other modules
@@ -88,6 +89,95 @@ class BakersCalculatorApp {
                 this.toggleBakingTips();
             });
         }
+    }
+    
+    initializePrivacyModal() {
+        const privacyLink = document.getElementById('privacy-policy-link');
+        const modal = document.getElementById('privacy-modal');
+        const closeBtn = modal.querySelector('.close');
+        const privacyContent = document.getElementById('privacy-content');
+        
+        // Privacy policy content - you can replace this with your markdown content
+        const privacyPolicyHTML = `
+            <h3>Information We Collect</h3>
+            <p>This application is designed with privacy in mind. We collect minimal information to provide our services:</p>
+            <ul>
+                <li><strong>Local Storage:</strong> We store your saved recipes and preferences locally on your device using browser local storage.</li>
+                <li><strong>Usage Data:</strong> We may collect anonymous usage statistics through Google Analytics to help improve our service.</li>
+                <li><strong>No Personal Information:</strong> We do not collect, store, or transmit any personal information such as names, email addresses, or contact details.</li>
+            </ul>
+
+            <h3>How We Use Information</h3>
+            <p>The limited information we collect is used solely to:</p>
+            <ul>
+                <li>Save your recipes locally on your device</li>
+                <li>Maintain your preferences and settings</li>
+                <li>Analyze usage patterns to improve our calculator</li>
+                <li>Ensure the proper functioning of our application</li>
+            </ul>
+
+            <h3>Data Storage and Security</h3>
+            <p>Your data security is important to us:</p>
+            <ul>
+                <li><strong>Local Storage:</strong> All your recipes and preferences are stored locally in your browser and never transmitted to our servers.</li>
+                <li><strong>No Account Required:</strong> You can use all features without creating an account or providing personal information.</li>
+                <li><strong>Secure Connection:</strong> Our website uses HTTPS to ensure secure communication.</li>
+            </ul>
+
+            <h3>Third-Party Services</h3>
+            <p>We use Google AdSense to display advertisements. Google may use cookies and collect data according to their privacy policy. You can learn more about Google's privacy practices at <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a>.</p>
+
+            <h3>Your Control</h3>
+            <p>You have full control over your data:</p>
+            <ul>
+                <li>Clear your browser's local storage to remove all saved recipes</li>
+                <li>Use browser settings to block cookies and tracking</li>
+                <li>Use ad blockers if you prefer not to see advertisements</li>
+            </ul>
+
+            <h3>Changes to This Policy</h3>
+            <p>We may update this privacy policy from time to time. Any changes will be reflected on this page with an updated effective date.</p>
+
+            <h3>Contact Us</h3>
+            <p>If you have any questions about this privacy policy, please contact us at allmyonlineprojects@gmail.com.</p>
+            
+            <p><em>Last updated: ${new Date().toLocaleDateString()}</em></p>
+        `;
+        
+        // Set the privacy policy content
+        privacyContent.innerHTML = privacyPolicyHTML;
+        
+        // Open modal when privacy link is clicked
+        privacyLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+        
+        // Close modal when X is clicked
+        closeBtn.addEventListener('click', () => {
+            this.closePrivacyModal();
+        });
+        
+        // Close modal when clicking outside of it
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                this.closePrivacyModal();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                this.closePrivacyModal();
+            }
+        });
+    }
+    
+    closePrivacyModal() {
+        const modal = document.getElementById('privacy-modal');
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore background scrolling
     }
     
     initializeRouting() {

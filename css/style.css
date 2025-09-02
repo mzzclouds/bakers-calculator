@@ -927,3 +927,142 @@ footer p {
         padding: 0.9rem 1.2rem;
     }
 }
+
+/* Privacy Policy Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background-color: #faf7f2;
+    margin: 5% auto;
+    padding: 0;
+    border: none;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 700px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-header {
+    background: #C4A484;
+    color: #e8dcc6;
+    padding: 1.5rem 2rem;
+    border-radius: 12px 12px 0 0;
+    position: relative;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-family: 'Georgia', serif;
+}
+
+.close {
+    color: #e8dcc6;
+    position: absolute;
+    top: 1.2rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.close:hover,
+.close:focus {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.modal-body {
+    padding: 2rem;
+    color: #4a4037;
+    font-family: 'Georgia', serif;
+    line-height: 1.7;
+}
+
+.modal-body h3 {
+    color: #5d5347;
+    margin: 1.5rem 0 1rem 0;
+    font-size: 1.2rem;
+}
+
+.modal-body h3:first-child {
+    margin-top: 0;
+}
+
+.modal-body p {
+    margin-bottom: 1rem;
+}
+
+.modal-body ul, .modal-body ol {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.modal-body li {
+    margin-bottom: 0.5rem;
+}
+
+#privacy-policy-link {
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#privacy-policy-link:hover {
+    color: #8b755d;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+        max-height: 75vh;
+    }
+    
+    .modal-header {
+        padding: 1rem 1.5rem;
+    }
+    
+    .modal-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .close {
+        top: 1rem;
+        right: 1.2rem;
+        font-size: 1.8rem;
+    }
+    
+    .modal-body {
+        padding: 1.5rem;
+    }
+}
