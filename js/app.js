@@ -18,6 +18,7 @@ class BakersCalculatorApp {
         this.initializeConverters();
         this.initializeSavedRecipes();
         this.initializeBakingTips();
+        this.initializeRouting();
         
         // Make instances available globally for other modules
         window.recipeCalculator = this.recipeCalculator;
@@ -60,28 +61,11 @@ class BakersCalculatorApp {
     }
     
     switchSection(section) {
-        // Update active nav link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.classList.remove('active');
-        });
-        document.querySelector(`[data-section="${section}"]`)?.classList.add('active');
+        // Update URL hash
+        window.history.pushState({}, '', `#${section}`);
         
-        // Show/hide sections
-        document.querySelectorAll('.main-content').forEach(content => {
-            content.style.display = 'none';
-        });
-        
-        const targetSection = document.getElementById(`${section}-section`);
-        if (targetSection) {
-            targetSection.style.display = section === 'calculator' ? 'grid' : 'block';
-        }
-        
-        this.currentSection = section;
-        
-        // Initialize section-specific functionality
-        if (section === 'percentages' && !this.bakersPercentageCalculator) {
-            this.bakersPercentageCalculator = new window.BakersPercentageCalculator();
-        }
+        // Navigate to the section
+        this.navigateToSection(section);
     }
     
     initializeCalculators() {
@@ -103,6 +87,58 @@ class BakersCalculatorApp {
             bakingTipsHeader.addEventListener('click', () => {
                 this.toggleBakingTips();
             });
+        }
+    }
+    
+    initializeRouting() {
+        // Handle initial page load with URL hash
+        this.handleRouteChange();
+        
+        // Listen for browser back/forward button events
+        window.addEventListener('popstate', () => {
+            this.handleRouteChange();
+        });
+        
+        // Listen for hash changes (fallback)
+        window.addEventListener('hashchange', () => {
+            this.handleRouteChange();
+        });
+    }
+    
+    handleRouteChange() {
+        // Get current hash from URL
+        const hash = window.location.hash.slice(1); // Remove the '#'
+        
+        // Default to calculator if no hash or invalid hash
+        const validSections = ['calculator', 'percentages'];
+        const section = validSections.includes(hash) ? hash : 'calculator';
+        
+        // Navigate to the section without updating URL (to avoid infinite loop)
+        this.navigateToSection(section);
+    }
+    
+    navigateToSection(section) {
+        // Update active nav link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+        });
+        document.querySelector(`[data-section="${section}"]`)?.classList.add('active');
+        
+        // Show/hide sections
+        document.querySelectorAll('.main-content').forEach(content => {
+            content.style.display = 'none';
+        });
+        
+        const targetSection = document.getElementById(`${section}-section`);
+        if (targetSection) {
+            targetSection.style.display = section === 'calculator' ? 'grid' : 'block';
+        }
+        
+        this.currentSection = section;
+        
+        // Initialize section-specific functionality
+        if (section === 'percentages' && !this.bakersPercentageCalculator) {
+            this.bakersPercentageCalculator = new window.BakersPercentageCalculator();
         }
     }
     
@@ -301,10 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.app = new BakersCalculatorApp();
 });
 
-// Handle browser back/forward buttons
-window.addEventListener('popstate', () => {
-    // Could implement URL-based navigation here if needed
-});
+// Browser navigation is now handled by the routing system
 
 // Utility functions for global use
 window.BakersUtils = {
