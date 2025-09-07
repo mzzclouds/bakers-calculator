@@ -1041,6 +1041,39 @@ footer p {
     color: #8b755d;
 }
 
+/* Ad Container Styles */
+.ad-container {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.header-ad {
+    margin-bottom: 2rem;
+}
+
+.sidebar-ad {
+    margin-top: 2rem;
+    padding: 1rem 0;
+}
+
+.footer-ad {
+    margin: 2rem 0;
+    padding: 1rem 0;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* Responsive ad adjustments */
+@media (max-width: 768px) {
+    .sidebar-ad {
+        margin: 1rem 0;
+        padding: 0.5rem 0;
+    }
+    
+    .header-ad, .footer-ad {
+        margin: 1rem 0;
+    }
+}
+
 @media (max-width: 768px) {
     .modal-content {
         width: 95%;
