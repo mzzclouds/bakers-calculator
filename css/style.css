@@ -9,10 +9,12 @@ body {
     line-height: 1.7;
     color: #4a4037;
     background: #faf7f2;
-    background-image: 
+    background-image:
         radial-gradient(circle at 20% 50%, rgba(139, 117, 93, 0.03) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(160, 134, 108, 0.05) 0%, transparent 50%);
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
@@ -92,6 +94,8 @@ nav a:hover, nav a.active {
     margin-bottom: 1.2rem;
     font-weight: 300;
     font-family: 'Georgia', serif;
+    letter-spacing: -0.5px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
 .hero p {
@@ -110,11 +114,12 @@ nav a:hover, nav a.active {
 }
 
 .calculator-section {
-    background: rgba(255, 251, 246, 0.8);
+    background: rgba(255, 251, 246, 0.9);
     padding: 2.5rem;
     border-radius: 16px;
     border: 3px solid #3c2415;
-    box-shadow: 0 8px 32px rgba(139, 117, 93, 0.08);
+    box-shadow: 0 8px 32px rgba(139, 117, 93, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: box-shadow 0.3s ease;
 }
 
 .sidebar {
@@ -124,10 +129,16 @@ nav a:hover, nav a.active {
 }
 
 .quick-tools, .saved-recipes {
-    background: rgba(255, 251, 246, 0.6);
+    background: rgba(255, 251, 246, 0.8);
     padding: 1.8rem;
     border-radius: 12px;
     border: 3px solid #3c2415;
+    box-shadow: 0 4px 16px rgba(139, 117, 93, 0.08);
+    transition: box-shadow 0.3s ease;
+}
+
+.quick-tools:hover, .saved-recipes:hover {
+    box-shadow: 0 6px 20px rgba(139, 117, 93, 0.12);
 }
 
 .section-title {
@@ -219,22 +230,29 @@ nav a:hover, nav a.active {
 
 .compact-scale-btn {
     padding: 0.9rem 0.75rem;
-    border: 1px solid #a0866c;
-    background: rgba(255, 249, 240, 0.8);
+    border: 2px solid #a0866c;
+    background: rgba(255, 249, 240, 0.9);
     color: #5d5347;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
     font-weight: 500;
     font-size: 0.85rem;
-    transition: all 0.2s ease;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     white-space: nowrap;
     align-self: end;
+    box-shadow: 0 2px 4px rgba(139, 117, 93, 0.1);
 }
 
 .compact-scale-btn:hover {
     background: #a0866c;
     color: white;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 117, 93, 0.2);
+}
+
+.compact-scale-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(139, 117, 93, 0.2);
 }
 
 label {
@@ -250,15 +268,16 @@ input, select {
     border-radius: 10px;
     font-size: 1rem;
     background: rgba(255, 249, 240, 0.5);
-    transition: all 0.3s ease;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     font-family: inherit;
 }
 
 input:focus, select:focus {
     outline: none;
     border-color: #a0866c;
-    background: rgba(255, 249, 240, 0.9);
-    box-shadow: 0 0 0 3px rgba(160, 134, 108, 0.1);
+    background: rgba(255, 249, 240, 1);
+    box-shadow: 0 0 0 3px rgba(160, 134, 108, 0.15), 0 2px 8px rgba(139, 117, 93, 0.1);
+    transform: translateY(-1px);
 }
 
 input:read-only {
@@ -390,18 +409,26 @@ input:read-only {
 }
 
 .add-ingredient {
-    background: #d69e2e;
+    background: linear-gradient(135deg, #d69e2e 0%, #b7791f 100%);
     color: white;
     border: none;
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
-    transition: background 0.3s;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(214, 158, 46, 0.25);
 }
 
 .add-ingredient:hover {
-    background: #b7791f;
+    background: linear-gradient(135deg, #b7791f 0%, #9a6519 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(214, 158, 46, 0.35);
+}
+
+.add-ingredient:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba(214, 158, 46, 0.25);
 }
 
 .remove-btn {
@@ -458,24 +485,39 @@ input:read-only {
     flex: 1;
     padding: 0.9rem;
     border: 2px solid #a0866c;
-    background: rgba(255, 249, 240, 0.8);
+    background: rgba(255, 249, 240, 0.9);
     color: #5d5347;
     border-radius: 10px;
     cursor: pointer;
     font-weight: 500;
-    transition: all 0.3s ease;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(139, 117, 93, 0.08);
 }
 
 .save-recipe-btn:hover {
     background: #68d391;
     border-color: #48bb78;
     color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(104, 211, 145, 0.3);
+}
+
+.save-recipe-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba(104, 211, 145, 0.3);
 }
 
 .clear-recipe-btn:hover {
     background: #fc8181;
     border-color: #f56565;
     color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(252, 129, 129, 0.3);
+}
+
+.clear-recipe-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba(252, 129, 129, 0.3);
 }
 
 .results-section {
@@ -492,8 +534,15 @@ input:read-only {
     padding: 1rem;
     background: rgba(255, 249, 240, 0.7);
     border-radius: 8px;
-    border: 1px solid rgba(139, 117, 93, 0.1);
+    border: 1px solid rgba(139, 117, 93, 0.15);
     margin-bottom: 0.8rem;
+    transition: all 0.2s ease;
+}
+
+.result-item:hover {
+    background: rgba(255, 249, 240, 0.9);
+    border-color: rgba(139, 117, 93, 0.25);
+    transform: translateX(4px);
 }
 
 .scale-info {
@@ -590,14 +639,17 @@ input:read-only {
     border-radius: 10px;
     margin-bottom: 0.8rem;
     cursor: pointer;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(139, 117, 93, 0.1);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid rgba(139, 117, 93, 0.1);
     position: relative;
+    box-shadow: 0 1px 3px rgba(139, 117, 93, 0.05);
 }
 
 .saved-recipe-item:hover {
-    background: rgba(255, 247, 237, 0.8);
-    transform: translateY(-1px);
+    background: rgba(255, 247, 237, 0.9);
+    transform: translateY(-2px);
+    border-color: rgba(139, 117, 93, 0.25);
+    box-shadow: 0 4px 12px rgba(139, 117, 93, 0.12);
 }
 
 .recipe-name {
